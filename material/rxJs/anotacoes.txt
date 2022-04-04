@@ -1,0 +1,3 @@
+Notificação Next": envia um valor como um Number, uma String, um Object, etc. 
+Notificação de "erro": envia um erro ou exceção de JavaScript. 
+Notificação "Complete": não envia valor.
