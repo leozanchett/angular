@@ -30,33 +30,21 @@ export class AppComponent implements OnInit {
       this.carService.update(this.car).subscribe(
         () => {
           this.cleanForm(form)
-        },
-        error => {
-          console.log(error.message);
-        }
-      );
+        });
     } else {
-      this.carService.save(this.car).subscribe(
-        () => {
-          this.cleanForm(form)
-        },
-        error => {
-          console.log(error.message);
-        }
-      );
+      this.carService.save(this.car).subscribe((car: Car) => {
+        this.cleanForm(form);
+      });
     }
   }
+
 
   // deleta um carro
   deleteCar(car: Car): void {
     this.carService.delete(car.id).subscribe(
       () => {
         this.getCars();
-      },
-      error => {
-        console.log(error.message);
-      }
-    );
+      });
   }
 
   // copia o carro para ser editado
