@@ -11,7 +11,7 @@ import { MensagensService } from './service/mensagens.service';
 })
 export class AppComponent implements OnInit {
 
-  car!: Car;
+  car = {} as Car;
   cars: Car[] = [];
 
   constructor(
