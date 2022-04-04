@@ -29,7 +29,7 @@ console.log('after');
 // 200
 // "after"
 
-const foo2 = new Observable(pao => {
+const foo2 = new Observable<number>(pao => {
    console.log('Hello');
    pao.next(42);
    pao.next(100);
@@ -40,7 +40,7 @@ const foo2 = new Observable(pao => {
  });
   
  console.log('before');
- foo2.subscribe((x) => {
+ foo2.subscribe((x: number) => {
    console.log(x);
  });
  console.log('after');
