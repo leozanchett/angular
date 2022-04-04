@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable, of, retry, tap } from 'rxjs';
 import { Car } from '../models/car';
+import { MensagensService } from './mensagens.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,8 @@ export class CarService {
 
   // injetando o httpClient
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private mensagensService: MensagensService
   ) { }
 
   //headers
@@ -70,13 +72,13 @@ export class CarService {
   }
 
   private log(message: String) {
-    console.log(`HeroService : ${message}`);
+    this.mensagensService.add(`CarService: ${message}`);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
       console.error(error);
-      this.log(`${operation} failed: ${error.message}`);
+      this.mensagensService.add(`${operation} failed: ${error.message}`);
       return of(result as T);
     };
   }
